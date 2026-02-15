@@ -1,0 +1,101 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+html,
+body,
+#app,
+#gameCanvas {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #04070d;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(25, 41, 69, 0.88), rgba(2, 5, 11, 0.94));
+  display: grid;
+  place-items: center;
+  text-align: center;
+  z-index: 20;
+  transition: opacity 400ms ease;
+}
+.hidden { display: none; }
+.overlay:not(.visible) { opacity: 0; pointer-events: none; }
+.progress-wrap { width: min(480px, 80vw); height: 12px; border: 1px solid #5aa2ff66; border-radius: 999px; overflow: hidden; }
+#progressBar { width: 0%; height: 100%; background: linear-gradient(90deg, #53d8fb, #6f7eff); transition: width 150ms ease; }
+
+.hud {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.vitals { min-width: 220px; padding: 10px; backdrop-filter: blur(8px); background: #0d141f85; border: 1px solid #9bb2d333; border-radius: 10px; }
+.meter { height: 8px; border-radius: 99px; background: #0d2037; margin-bottom: 8px; overflow: hidden; }
+#healthBar, #staminaBar { height: 100%; width: 100%; }
+#healthBar { background: linear-gradient(90deg, #ff6363, #f94848); }
+#staminaBar { background: linear-gradient(90deg, #6fd987, #4ccf70); }
+.objective { max-width: 40ch; padding: 10px 12px; border-radius: 10px; background: #06111fcc; border: 1px solid #52b8ff55; }
+.story {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  max-width: 360px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #050b14de;
+  border: 1px solid #8eb6ff44;
+  z-index: 10;
+}
+
+.mobile {
+  position: fixed;
+  inset: auto 0 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: 0 18px;
+  z-index: 12;
+  pointer-events: none;
+}
+#joystickBase {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #0f29448f;
+  position: relative;
+  pointer-events: auto;
+  border: 1px solid #96c3ff4f;
+}
+#joystickKnob {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 35px;
+  left: 35px;
+  background: #68a7ff;
+}
+#interactBtn,
+#sprintBtn {
+  pointer-events: auto;
+  margin-left: 8px;
+  width: 110px;
+  height: 52px;
+  border-radius: 12px;
+  border: 1px solid #9ed4ff71;
+  background: #143155d9;
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .mobile { display: flex; }
+}
